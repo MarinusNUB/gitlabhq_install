@@ -28,8 +28,17 @@ fi
 
 if [ "$DIST" != 'Fedora' ]
 	then 
-	echo 'Installing the EPEL repo.' 
-	/bin/rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm
+  cpuarch=`/bin/uname -r`;
+  epelroot='http://download.fedoraproject.org/pub/epel/6'
+  epelpkg='epel-release-6-7.noarch.rpm'
+  if [[ $cpuarch == *64* ]]
+    then
+    echo "I'm a 64bit kernel, so I'll install the x86_64 EPEL Repo Package"
+    /bin/rpm -Uvh "$epelroot/x86_64/$epelpkg"
+  else
+    echo "I'm not a 64bit kernel, so I'll install the i386 EPEL Repo Package"
+    /bin/rpm -Uvh "$epelroot/i386/$epelpkg"
+  fi
 fi
 
 # Make sure that we have a colletion of things istalled - These are needed to build the various components- I aint testing for any exceptions... You best be vigilant.
