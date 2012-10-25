@@ -1,3 +1,7 @@
+# THIS REPO IS DEPRECATED AND WILL BE REMOVED SOON
+
+
+
 # Installing GitLabHQ on Ubuntu Server 11.10 #
 
 #### Download the latest server updates ####
